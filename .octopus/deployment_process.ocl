@@ -1,7 +1,7 @@
 step "create-namespace-if-not-exists" {
     name = "Create namespace if not exists"
     properties = {
-        Octopus.Action.TargetRoles = "demo-k8s-cluster"
+        Octopus.Action.TargetRoles = "octopub"
     }
 
     action {
@@ -37,7 +37,7 @@ step "create-namespace-if-not-exists" {
 step "deploy-octopub-products-chart" {
     name = "Deploy Octopub Products chart"
     properties = {
-        Octopus.Action.TargetRoles = "demo-k8s-cluster"
+        Octopus.Action.TargetRoles = "octopub"
     }
 
     action {
