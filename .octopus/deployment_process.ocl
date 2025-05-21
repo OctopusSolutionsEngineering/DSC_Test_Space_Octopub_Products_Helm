@@ -26,7 +26,7 @@ step "create-namespace-if-not-exists" {
                 {
                 	Write-Host "Namespace $clusterNamespace already exists, moving on ..."
                 }
-                        EOT
+                            EOT
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "PowerShell"
         }
@@ -55,7 +55,7 @@ step "deploy-octopub-products-chart" {
                     "Value": "database:\n  hostname: #{Octopub.Helm.Database.Server.Name}\n  port: 3306\n  username: #{Octopub.Helm.Database.Server.User}\n  password: #{Octopub.Helm.Database.Server.Password}\n  name: #{Octopub.Helm.Database.Name}\n  migrateOnStartup: false\n  \ningress:\n  enabled: true\n  className: \"nginx\"\n  annotations: {\n     }\n  hosts:\n    - host: #{Octopub.Helm.Host.Name}\n      paths:\n        - path: /api/products\n          pathType: Prefix\n        \nservice:\n  type: ClusterIP\n  port: 8083\n  \nimage:\n  repository: #{Octopus.Action.Package[octopub-products-microservice-mysql].PackageId}\n  tag: #{Octopus.Action.Package[octopub-products-microservice-mysql].PackageVersion}          "
                   }
                 ]
-                        EOT
+                            EOT
             Octopus.Action.Kubernetes.ResourceStatusCheck = "True"
             Octopus.Action.Kubernetes.WaitForJobs = "False"
             Octopus.Action.RunOnServer = "false"
